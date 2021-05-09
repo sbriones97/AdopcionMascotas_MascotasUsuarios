@@ -1,6 +1,9 @@
-FROM python:3.8-alpine
-LABEL autor="Salvado Briones y Victoria"
+ARG PORT=8080
+FROM node:12-alpine
+LABEL autor="Salvado Briones y Victoria Villarreal"
 WORKDIR /usr/src/app
 COPY package*.json ./
+RUN npm install
 COPY . . 
-CMD ["python"]
+EXPOSE ${PORT}
+CMD ["node", "index.js"]
